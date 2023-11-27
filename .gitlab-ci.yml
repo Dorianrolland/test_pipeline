@@ -14,13 +14,13 @@ build:
 test:
   stage: test
   script: 
-    -echo "test"
+    - echo "test"
   except:
     - tags
 
 deploy: 
   stage: deploy
   script:
-    -echo "deploy"
+    - echo "deploy"
   except:
     - /^xo-.*$/ 
