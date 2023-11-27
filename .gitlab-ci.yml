@@ -1,7 +1,26 @@
 stages:
-  - test 
+  - build 
+  - test
+  - deploy
 
-verif_test:
-    stage: test
-    script :
-        - echo "hello word !!"
+build:
+   stage: build
+   script :
+     - echo "build"
+   only:
+     refs: 
+       - tags
+
+test:
+  stage: test
+  script: 
+    -echo "test"
+  except:
+    - tags
+
+deploy: 
+  stage: deploy
+  script:
+    -echo "deploy"
+  except:
+    - /^xo-.*$/ 
