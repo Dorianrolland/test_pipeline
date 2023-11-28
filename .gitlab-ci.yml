@@ -1,11 +1,25 @@
+cache:
+  - key:
+    #files:
+     # - dorian.txt
+    paths:
+      - .lib
+
 stages:
-  - build 
+  - step1
+  - step2
 
-build:
-   stage: build
-   script :
-     - echo "build"
-   only:
-     variables:
-       - $VARIABLE1 == "Dorian" && $VARIABLE2 == "test"
-
+j1: 
+  stage: step1
+  script:
+    - mkdir -p .lib
+    - echo coucou > .lib/dorian.txt
+  tags:
+    - docker
+  
+j2:
+  stage: step2
+  script:
+    - cat .lib/dorian.txt
+  tags:
+    - docker
