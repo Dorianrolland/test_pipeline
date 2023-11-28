@@ -22,5 +22,5 @@ deploy:
   stage: deploy
   script:
     - echo "deploy"
-  except:
+  only:
     - /^xo-.*$/ 
